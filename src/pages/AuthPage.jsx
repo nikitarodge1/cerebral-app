@@ -49,7 +49,7 @@ const AuthPage = () => {
       <div className="hidden lg:flex lg:w-1/2 bg-purple-700 text-white flex-col justify-center items-start p-10 relative">
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/src/assets/auth-bg.png')" }}></div>
         <div className="relative z-10">
-          <img  alt="Salesway Logo" width={256} height={57} className="mb-6" />
+          <img  src="" alt="" width={256} height={57} className="mb-6" />
           <h1 className="text-4xl font-thin max-w-lg mt-4">
             Salesway AI Assistant
           </h1>
