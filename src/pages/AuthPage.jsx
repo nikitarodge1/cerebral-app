@@ -44,74 +44,84 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col lg:flex-row bg-gradient-to-r from-purple-500 to-purple-900 bg-cover">
-      {/* Left Box */}
-      <div className="w-1/2 flex flex-col justify-start p-20  bg-[url(src/assets/auth-bg.png)]  text-white">
-        <img src="" alt="" width={256} height={57} className='mb-6'/>
-        <h1 className="text-[40px] text-lg-[90px] leading-tight font-thin mb-4 max-w-[647px] mt-4">
-          Salesway AI Assistant
-        </h1>
-        <p className="text-3xl max-w-[400px]">Supercharge Your Distribution using our AI assistant!</p>
-      </div>
-      
-      {/* Right Box */}
-      <div className="w-1/2  bg-gray-100 flex flex-col justify-center items-center p-10">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-semibold text-gray-700">Welcome to SalesWay</h2>
+    <div className="flex flex-col lg:flex-row h-screen w-full">
+      {/* Left Section */}
+      <div className="hidden lg:flex lg:w-1/2 bg-purple-700 text-white flex-col justify-center items-start p-10 relative">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/src/assets/auth-bg.png')" }}></div>
+        <div className="relative z-10">
+          <img src="" alt="Salesway Logo" width={256} height={57} className="mb-6" />
+          <h1 className="text-4xl font-thin max-w-lg mt-4">
+            Salesway AI Assistant
+          </h1>
+          <p className="text-lg mt-2 max-w-md">
+            Supercharge Your Distribution using our AI assistant!
+          </p>
         </div>
-        <form onSubmit={onSubmit} className="w-full bg-amber-200s p-6 rounded-md">
-          {isRegister && (
+      </div>
+
+      {/* Right Section */}
+      <div className="flex w-full lg:w-1/2 bg-gray-100 justify-center items-center p-6">
+        <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-semibold text-gray-700">Welcome to SalesWay</h2>
+          </div>
+
+          <form onSubmit={onSubmit} className="space-y-4">
+            {isRegister && (
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={onChange}
+                placeholder="Email"
+                required
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500"
+              />
+            )}
             <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={onChange}
-            placeholder="Email"
-            required
-            className="w-full p-3 mb-4 border text-black border-gray-300 rounded-md"
-          />
-          )}
-         <input
               type="text"
               name="username"
               value={username}
               onChange={onChange}
               placeholder="Name"
               required
-              className="w-full p-3 mb-4 border text-black border-gray-300 rounded-md"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500"
             />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={onChange}
-            placeholder="Password"
-            required
-            className="w-full p-3 mb-4 border text-black border-gray-300 rounded-md"
-          />
-          <div className="flex justify-end w-full text-sm mb-4 text-black text-right">
-            
-            <a href="#" className="text-purple-600">Forgot password?</a>
-          </div>
-          <button 
-            type="submit" 
-            className="w-full p-3 bg-purple-700 text-white rounded-md flex justify-center items-center"
-            disabled={loading}
-          >
-            {loading ? (
-              <span className="animate-spin border-2 border-white border-t-transparent rounded-full w-5 h-5"></span>
-            ) : (
-              isRegister ? 'Register' : 'Login'
-            )}
-          </button>
-        </form>
-        
-        <p className="mt-4 text-sm text-gray-600 font-semibold flex justify-center gap-2">
-          Don’t have an account? 
-          <a href="#" className="text-purple-600" onClick={() => setIsRegister(!isRegister)}>
-            {isRegister ? 'Login' : 'Create Account'}
-          </a>
-        </p>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              placeholder="Password"
+              required
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500"
+            />
+            <div className="flex justify-end text-sm text-purple-600">
+              <a href="#">Forgot password?</a>
+            </div>
+            <button 
+              type="submit" 
+              className="w-full p-3 bg-purple-700 text-white rounded-md flex justify-center items-center transition hover:bg-purple-800"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="animate-spin border-2 border-white border-t-transparent rounded-full w-5 h-5"></span>
+              ) : (
+                isRegister ? 'Register' : 'Login'
+              )}
+            </button>
+          </form>
+
+          <p className="mt-4 text-sm text-gray-600 text-center">
+            {isRegister ? "Already have an account?" : "Don’t have an account?"}
+            <button
+              onClick={() => setIsRegister(!isRegister)}
+              className="ml-2 text-purple-600 font-semibold"
+            >
+              {isRegister ? 'Login' : 'Create Account'}
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );
